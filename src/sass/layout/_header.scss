@@ -1,0 +1,55 @@
+.header {
+  width: 100%;
+  padding: 2rem 0;
+  background-color: $color-1;
+  color: $color-white;
+  border-bottom: 1px solid $color-white;
+  position: relative;
+
+  &__logo {
+    display: inline-block;
+    float: left;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    letter-spacing: 1.5rem;
+    font-weight: 700;
+  }
+  &__cart {
+    display: inline-block;
+    float: right;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    color: inherit;
+    //background-color: white;
+    margin-top: -1.5rem;
+    margin-right: 2rem;
+    position: relative;
+    font-size: 3rem;
+    height: 2rem;
+  }
+
+  &__cart__badge {
+    display: block;
+    position: absolute;
+    width: 70%;
+    height: 100%;
+    top: 0;
+    left: 75%;
+    font-size: 1.5rem;
+    border: 3px solid $color-4;
+    border-radius: 100%;
+    background-color: $color-4;
+  }
+
+  :after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
