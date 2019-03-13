@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './layout/Header';
+import SubHeader from './layout/SubHeader';
 import './sass/main.scss';
 
 class App extends Component {
@@ -7,6 +8,7 @@ class App extends Component {
     return (
       <>
         <Header/>
+        <SubHeader/>
       </>
     );
   }

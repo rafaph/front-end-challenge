@@ -7,7 +7,7 @@ function Header() {
         <span className="header__title">amaro</span>
       </div>
       <button className="header__cart">
-        <span className="header__cart__badge">0</span>
+        <span className="header__cart__badge">2</span>
         <span className="header__cart__icon icon-shopping-bag"/>
       </button>
     </header>
