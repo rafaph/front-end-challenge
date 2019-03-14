@@ -17,7 +17,6 @@ function SubHeader() {
         <div className="sub-header__filter">
           <input type="checkbox" className="sub-header__filter__input" id="filter-sale"/>
           <label htmlFor="filter-sale" className="sub-header__filter__label">
-            <span className="sub-header__filter__button"/>
             on sale
           </label>
         </div>

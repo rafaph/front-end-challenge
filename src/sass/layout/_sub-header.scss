@@ -2,6 +2,7 @@
   background-color: $color-2;
   padding: 0.75rem 0;
   color: $color-white;
+  font-size: 1.3rem;
 
   &:after {
     content: "";
@@ -10,17 +11,17 @@
   }
 
   &--left {
-    display: inline-block;
-    text-align: left;
+    display: block;
     float: left;
     width: 30%;
+    text-align: left;
   }
 
   &--right {
-    display: inline-block;
-    text-align: right;
+    display: block;
     float: left;
     width: 70%;
+    text-align: right;
   }
 
   &__items {
@@ -40,6 +41,7 @@
   &__search {
     display: inline-block;
     padding-right: 1rem;
+    width: 60%;
   }
 
   &__search__input {
@@ -48,11 +50,11 @@
     background-color: inherit;
     border: 0;
     outline: 0;
+    width: 90%;
     border-bottom: 1px solid $color-white;
     transition: all .2s ease;
-    width: 8rem;
 
-    &::-webkit-input-placeholder {
+    &::placeholder {
       color: $color-white-dark-1;
     }
 
@@ -64,6 +66,7 @@
   }
 
   &__search__input__label {
+    width: 10%;
   }
 
   &__filter {
@@ -73,34 +76,46 @@
   }
 
   &__filter__input {
-    display: none;
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: .1rem;
+    margin: -.1rem;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: .1rem;
   }
 
   &__filter__label {
     cursor: pointer;
-  }
+    position: relative;
+    padding-left: 2rem;
 
-  &__filter__button {
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 1.25rem;
-    width: 1.25rem;
-    vertical-align: middle;
-
-    &::after {
-      content: "";
-      display: none;
+    &:before {
       position: absolute;
-      top: .5rem;
-      left: .9rem;
-      border-width: 0 3px 3px 0;
-      transform: rotate(45deg);
+      top: 15%;
+      left: 0;
+      content: "";
+      display: block;
+      width: 1.5rem;
+      height: 1.5rem;
+      border: 1px solid $color-white;
+    }
+
+    &:after {
+      position: absolute;
+      top: 15%;
+      left: 0;
+      content: "";
+      width: 0.75rem;
+      height: 0.75rem;
+      transform: translate(50%, 50%);
+      background-color: transparent;
+      transition: background-color .3s;
     }
   }
 
-  &__filter__input:checked + &__filter__label &__filter__button::after {
-    display: block;
+  &__filter__input:checked + &__filter__label:after {
+    background-color: $color-white;
   }
 }
