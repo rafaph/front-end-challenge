@@ -3,9 +3,7 @@ import React from 'react';
 function Header() {
   return (
     <header className="header">
-      <div className="header__logo">
-        <span className="header__title">amaro</span>
-      </div>
+      <h1 className="header__title">amaro</h1>
       <button className="header__cart">
         <span className="header__cart__badge">2</span>
         <span className="header__cart__icon icon-shopping-bag"/>

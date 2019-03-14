@@ -1,8 +1,9 @@
 .header {
-  padding: 1rem 0;
+  padding: 0.8rem 0;
   background-color: $color-1;
   color: $color-white;
   border-bottom: .1rem solid $color-white;
+  text-align: center;
   position: relative;
 
   &:after {
@@ -11,15 +12,10 @@
     clear: both;
   }
 
-  &__logo {
-    display: block;
-    float: left;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  &__title {
+    display: inline;
+    margin: 0;
     text-transform: uppercase;
-    font-size: 2rem;
     letter-spacing: 1rem;
     font-weight: 700;
   }
@@ -27,17 +23,15 @@
   &__cart {
     display: block;
     outline: none;
-    float: right;
     background-color: transparent;
     border: 0;
-    border-radius: 0;
     padding: 0;
     color: inherit;
-    vertical-align: middle;
-    margin-right: 2rem;
-    position: relative;
     font-size: 2rem;
-    line-height: 0;
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translate(-50%, -50%);
   }
 
   &__cart__badge {
