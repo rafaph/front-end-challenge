@@ -1,4 +1,4 @@
-import {createSelector} from 'reselect';
+import { createSelector } from 'reselect';
 
 const getAllProducts = state => state.catalog.products;
 const getQuery = state => state.catalog.query;

@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "flow-bin": "^0.95.0",
     "normalize.css": "^8.0.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
@@ -14,7 +15,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "flow": "flow"
   },
   "eslintConfig": {
     "extends": "react-app"

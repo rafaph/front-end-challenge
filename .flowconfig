@@ -1,0 +1,17 @@
+[ignore]
+./public
+./node_modules
+./src/sass
+./src/fonts
+./src/resources
+
+[include]
+./src/js
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]

@@ -1,8 +1,8 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions'
 import SubHeader from '../layout/SubHeader';
-import {getProducts} from '../selectors';
+import { getProducts } from '../selectors';
 
 const mapStateToProps = state => ({
   products: getProducts(state)
