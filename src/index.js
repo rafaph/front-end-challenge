@@ -6,7 +6,10 @@ import reducer from './js/reducers'
 import App from './js/App';
 import * as serviceWorker from './js/serviceWorker';
 
-const store = createStore(reducer);
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 
 render(

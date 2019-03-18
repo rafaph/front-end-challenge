@@ -1,5 +1,7 @@
 // @flow
 import * as React from 'react';
+import debounce from 'lodash.debounce';
+import SubHeaderLeft from '../components/SubHeaderLeft';
 
 type Props = {
   products: Array<any>,
@@ -10,40 +12,35 @@ type Props = {
 };
 
 function SubHeader({ products, actions }: Props) {
-  const onChangeSearch = (event: SyntheticEvent<HTMLInputElement>) => {
-    actions.setSearchFilter(event.currentTarget.value)
-  };
+  const dispatchSearch = React.useCallback(
+    debounce((query: string) => {
+      actions.setSearchFilter(query);
+    }, 500)
+  );
 
-  const onChangeOnSale = (event: SyntheticEvent<HTMLInputElement>) => {
-    actions.setOnSaleFilter(event.currentTarget.checked)
-  };
+  const onChangeSearch = React.useCallback(
+    (event: SyntheticEvent<HTMLInputElement>) => {
+      dispatchSearch(event.currentTarget.value);
+    }
+  );
+
+  const onChangeOnSale = React.useCallback(
+    (event: SyntheticEvent<HTMLInputElement>) => {
+      actions.setOnSaleFilter(event.currentTarget.checked)
+    }
+  );
+
+  React.useEffect(() => () => {
+    //cancel debounce when component will unmount or right before update
+    dispatchSearch.cancel();
+  });
 
   return (
     <div className="sub-header">
-      <div className="sub-header--left">
-        <div className="sub-header__items">
-          <span className="sub-header__items-value">{products.length}</span>
-          <span className="sub-header__items-unit">item(s)</span>
-        </div>
-      </div>
-      <div className="sub-header--right">
-        <div className="sub-header__search">
-          <input type="text" className="sub-header__search__input"
-                 id="search-input" placeholder="Search"
-                 onChange={onChangeSearch}/>
-          <label htmlFor="search-input"
-                 className="sub-header__search__label icon-search"/>
-        </div>
-        <div className="sub-header__filter">
-          <input type="checkbox" className="sub-header__filter__input"
-                 id="filter-sale" onChange={onChangeOnSale}/>
-          <label htmlFor="filter-sale" className="sub-header__filter__label">
-            on sale
-          </label>
-        </div>
-      </div>
+      <SubHeaderLeft productsSize={products.length}/>
+
     </div>
-  )
+  );
 }
 
 export default SubHeader;
