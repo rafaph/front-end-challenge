@@ -1,6 +1,5 @@
 // @flow
-import * as React from 'react';
-
+import React from 'react';
 type Props = {
   productsSize: number,
 };
@@ -16,8 +15,9 @@ function SubHeaderLeft({ productsSize }: Props) {
   );
 }
 
-function areEqual(prevProps: Props, nextProps: Props) {
-  return prevProps.productsSize === nextProps.productsSize;
-}
-
-export default React.memo<Props>(SubHeaderLeft, areEqual);
+export default React.memo<Props>(
+  SubHeaderLeft,
+  (prevProps: Props, nextProps) => {
+    return prevProps.productsSize === nextProps.productsSize
+  }
+);

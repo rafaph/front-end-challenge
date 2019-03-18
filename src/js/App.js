@@ -1,14 +1,15 @@
 import React from 'react';
 import Header from './layout/Header';
-import SubHeader from './containers/SubHeader';
+import SubHeader from './layout/SubHeader';
 import '../sass/main.scss';
 
-function App() {
+function App({catalog, cart, actions}) {
   return (
-    <>
+    <React.StrictMode>
       <Header/>
-      <SubHeader/>
-    </>
+      <SubHeader productsSize={catalog.products.length}
+                 actions={actions}/>
+    </React.StrictMode>
   );
 }
 

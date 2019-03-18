@@ -1,46 +1,29 @@
 // @flow
-import * as React from 'react';
-import debounce from 'lodash.debounce';
+import React from 'react';
 import SubHeaderLeft from '../components/SubHeaderLeft';
+import SubHeaderRight from '../components/SubHeaderRight';
 
 type Props = {
-  products: Array<any>,
+  productsSize: number,
   actions: {
     setSearchFilter: (query: string) => void,
     setOnSaleFilter: (onSale: boolean) => void
   }
 };
 
-function SubHeader({ products, actions }: Props) {
-  const dispatchSearch = React.useCallback(
-    debounce((query: string) => {
-      actions.setSearchFilter(query);
-    }, 500)
-  );
-
-  const onChangeSearch = React.useCallback(
-    (event: SyntheticEvent<HTMLInputElement>) => {
-      dispatchSearch(event.currentTarget.value);
-    }
-  );
-
-  const onChangeOnSale = React.useCallback(
-    (event: SyntheticEvent<HTMLInputElement>) => {
-      actions.setOnSaleFilter(event.currentTarget.checked)
-    }
-  );
-
-  React.useEffect(() => () => {
-    //cancel debounce when component will unmount or right before update
-    dispatchSearch.cancel();
-  });
-
+function SubHeader({ productsSize, actions }: Props) {
   return (
     <div className="sub-header">
-      <SubHeaderLeft productsSize={products.length}/>
-
+      <SubHeaderLeft productsSize={productsSize}/>
+      <SubHeaderRight setSearchFilter={actions.setSearchFilter}
+                      setOnSaleFilter={actions.setOnSaleFilter}/>
     </div>
   );
 }
 
-export default SubHeader;
+export default React.memo<Props>(
+  SubHeader,
+  (prevProps: Props, nextProps) => {
+    return prevProps.productsSize === nextProps.productsSize
+  }
+);
